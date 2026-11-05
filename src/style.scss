@@ -47,7 +47,7 @@ html {
 
 body {
   padding-top: 4em;
-  text-align: center;
+  text-align: left;
   margin: auto;
   min-width: 320px;
   min-height: 100vh;
@@ -67,32 +67,28 @@ a {
   font-weight: 500;
   color: light-dark($background-color, $foreground-color);
   text-decoration: inherit;
-  padding: 5px;
 
   &:hover {
     color: $highlight-color;
   }
 }
 
-#home {
+#home, #about{
   @include section;
+  max-width: 80%;
+  margin-inline: auto;
 }
 
-#projects {
+#projects, #skills{
   @include section;
-}
-
-#skills {
-  @include section;
-}
-
-#about {
-  @include section;
+  margin-inline: auto;
 }
 
 #contacts {
   @include section;
+  max-width: 80%;
   padding-bottom: 8em;
+  margin-inline: auto;
 }
 
 #leftnav {
@@ -107,6 +103,16 @@ a {
   top: 0;
   bottom: auto;
   right: 0;
+}
+
+#leftnav > *,
+#rightnav > * {
+  padding: 5px;
+}
+
+#projects > h2,
+#skills > h2 {
+  margin-left: calc(10% - 0.5em);
 }
 
 @media (max-width: $mediaMaxWidth) {

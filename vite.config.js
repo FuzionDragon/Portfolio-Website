@@ -8,8 +8,6 @@ const projectPages = Object.fromEntries(
     .map((f) => [f.replace(/\.html$/, ''), resolve(import.meta.dirname, 'projects', f)]),
 );
 
-console.log(projectPages);
-
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
   build: {

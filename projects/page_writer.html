@@ -31,6 +31,58 @@
   </div>
   <div id="about">
     <h2>About</h2>
+    <h3>Concept</h3>
+    <p>For some of my ideas that I come up with I want to immediately note them down with as little friction as
+      possible. </p>
+    <p>Although I love using Obsidian, and despite there possibly being a plugin out there to solve my issue,
+      whenever I have an idea for a specific project or future game idea I need to search in my database of notes that
+      specific document, and then afterwards scroll to the end of that document to add on that idea.</p>
+    <p>This is where I came up with the idea of Page Writer, a notetaking application which
+      would quickly and efficiently create short notes that would automatically be assigned to their respective notes.
+    </p>
+    <h3 style="margin-top: 2em">Chosen Tech Stack</h3>
+    <p>I wanted to use Tauri as I quite liked using it in the past with Rust and SolidJS.</p>
+    <p>Although I wanted to use Rust for the backend, the front-end took a bit of time to think about primarily due to
+      multiple factors like interest as well as how well used they were in the industry. From what I remember, I
+      considered Svelte, SolidJS, and even HTMX. In the end however, I ended up going with vanilla JavaScript upon
+      running into the frustration of having my previous Tauri project using SolidJS and Tailwind for its frontend
+      breaking due to dependency issues. My main goal was to keep the project minimal with as few dependencies as
+      needed. At the time, I was interested in learning vanilla JavaScript, despite using TypeScript for my previous
+      Tauri project, and also SCSS when learning of SASS (opting for SCSS instead of SASS due to being more familiar
+      with standard CSS).
+    </p>
+    <p>Of course, I needed a method of storing my notes in a way that could easily be manipulated so I opted for SQLite,
+      like most of my other projects.</p>
+    <p>As Page Writer will be very keyboard focused there would be lots of key-binds to remember and use, so I needed a
+      way for a user to tweak these too. Of course a dedicated menu is a no-brainer but in its current state I have
+      decided to opt for a simpler implementation of having a plain text file be how the user configures Page Writer. I
+      originally thought about using JSON, but then opted for the more human-readable TOML format due to how easy it is
+      to understand, even for those who haven't used it before.</p>
+    <h3 style="margin-top: 2em">Key Features</h3>
+    <p>The first immediate idea was to have the application follow the idea of snippets and documents, where multiple
+      snippets grouped together form a document (and multiple documents form a corpus).</p>
+    <p>One of the ways to add 'snippets' is through 'marking' a specific document, to which all new notes are
+      automatically appended onto it. The other way is to simply assign the name as you write a snippet, both specified
+      in the title bar or when a title header is written in this first snippet, to which is then added to an existing
+      document or used to create a new one.</p>
+    <p>I wanted markdown rendering, so currently the implementation for this is via a dedicated viewing page for a
+      selected document, where you can also manage their respective snippets too. In the future this might be changed to
+      feel more intuitive and simple through merging both menus, although that will need to be brainstormed in later on.
+    </p>
+    <p>When it comes to how all of this snippet and document management is done, I simply use SQL statements on a SQLite
+      database that holds all the user data. This format provides easier manipulation of the user data for all of the
+      desired management and queries of snippets and documents that a plain text file couldn't. Of course, plain text
+      markdown export and import features are planned for the future.</p>
+    <p>Finally, one last important feature is data syncing between devices. This was in the works for a couple months
+      due to both studies and also difficulty with managing both Linux and Android related factors, primarily file
+      permissions and general filesystem issues.</p>
+    <p>In the end, this requirement was fulfilled. Local network data syncing, as well as data backup, is a working
+      feature that uses TCP and UDP network protocols to both detect client devices running Page Writer (when both are
+      in the process of data syncing) and then sending over their respective data to be synced and made up to date.</p>
+    <p>The implementation of the required backup system allows the easy addition in the future for multiple databases to
+      be employed, although I still need to research in regards to menu dialogs to allow the user to easily choose
+      where they want to save them. Thankfully, it seems there is a Tauri plugin for this which is also cross-platform
+      compatible (which is very fortunate).</p>
   </div>
   <div id="skills">
     <h2>Languages and Technologies</h2>
@@ -52,8 +104,6 @@
         <p>NPM / Cargo</p>
       </div>
     </div>
-  </div>
-  <div id="skills">
   </div>
   <div id="contacts">
     <h2>Contacts</h2>
